@@ -11,12 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import environ
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     # set casting, default value
+#     DEBUG=(bool, False)
+# )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -127,13 +126,15 @@ WSGI_APPLICATION = 'eco_marketplace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'carbon_platform_v1',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': "$oKmiJn64!",
-        'HOST': 'carbonplatform-v1.co0g0rwd6ikr.us-west-2.rds.amazonaws.com',
-        'PORT': '5432'
+        'PASSWORD': "M3mWih1GzdwAeHfaYdK6",
+        'HOST': 'containers-us-west-133.railway.app',
+        'PORT': '7325'
     }
 }
+
+# postgresql://postgres:M3mWih1GzdwAeHfaYdK6@containers-us-west-133.railway.app:7325/railway
 
 
 
