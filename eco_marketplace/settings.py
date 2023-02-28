@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import environ
+
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # env = environ.Env(
 #     # set casting, default value
@@ -20,24 +26,20 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STRIPE_PK_TEST = 'pk_test_51M6z9KDGwObfk40iF1zi8zMoa8PKevdBc7G55H6A2WmwPseQm8C72Dja5xL2rkoz0FJxf2vIC3SgEvmvNSBmy58P00YLtALJWA'
-STRIPE_SK_TEST = 'sk_test_51M6z9KDGwObfk40ipcK9NsTjbCQoD8RNWxkS6xbcvRIq0E5RRPR1wIFTPB1osKyNBWKniHOWoZUlaOG9eHMU6Lus00Kgis60b6'
+STRIPE_PK_TEST = env('STRIPE_PK_TEST')
+STRIPE_SK_TEST = env('STRIPE_SK_TEST')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '"z+a!oqez6-ie6vtzjh+6*@3w)e6#y$c_ef%n1+ypjnjtety@)c"'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [ 
     'localhost',
-    'web-production-8fd9.up.railway.app',
-    'https://gorgeous-sawine-faaa7b.netlify.app',
-    'https://carbon-platform-v1.herokuapp.com',
-    'carbon-platform-v1.herokuapp.com',
-    'https://web-production-8fd9.up.railway.app',
+    'web-production-93d3.up.railway.app/',
     '127.0.0.1'
 ]
 
@@ -50,16 +52,13 @@ CORS_ORIGIN_WHITELIST = [
     'https://gorgeous-sawine-faaa7b.netlify.app',
     'https://carbon-platform-v1.herokuapp.com',
     'https://web-production-8fd9.up.railway.app',
+    'https://poetic-gelato-0841e6.netlify.app'
 ]
 
-ALGOLIA_APP_ID =  '65BCW4KGRA'
+ALGOLIA_APP_ID =  env('ALGOLIA_APP_ID')
 
-ALGOLIA_API_KEY = '0f0c0dec349ea76c7607f5a3bb20404d'
+ALGOLIA_API_KEY = env('ALGOLIA_API_KEY')
 
-ALGOLIA = {
-    'APPLICATION_ID': '65BCW4KGRA',
-    'API_KEY': '0f0c0dec349ea76c7607f5a3bb20404d'
-}
 
 
 # Application definition
@@ -126,11 +125,11 @@ WSGI_APPLICATION = 'eco_marketplace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': "M3mWih1GzdwAeHfaYdK6",
-        'HOST': 'containers-us-west-133.railway.app',
-        'PORT': '7325'
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT')
     }
 }
 
@@ -198,6 +197,6 @@ AWS_QUERYSTRING_AUTH = False
 # STATIC_ROOT = BASE_DIR / 'static'
 
 if DEBUG:
-    CLIENT_URL = "https://gorgeous-sawine-faaa7b.netlify.app" #"http://localhost:8080"
+    CLIENT_URL = "http://localhost:8080"
 else:
-    CLIENT_URL = "https://gorgeous-sawine-faaa7b.netlify.app"
+    CLIENT_URL = "https://poetic-gelato-0841e6.netlify.app/"
