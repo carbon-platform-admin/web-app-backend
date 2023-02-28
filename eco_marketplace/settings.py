@@ -59,6 +59,11 @@ ALGOLIA_APP_ID =  env('ALGOLIA_APP_ID')
 
 ALGOLIA_API_KEY = env('ALGOLIA_API_KEY')
 
+ALGOLIA = {
+    "ALGOLIA_API_KEY": ALGOLIA_API_KEY,
+    "ALGOLIA_APP_ID": ALGOLIA_APP_ID
+}
+
 
 
 # Application definition
